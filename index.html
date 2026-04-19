@@ -59,8 +59,7 @@
       height: 64px;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2rem;
-      transition: background .4s ease, border-color .4s ease, backdrop-filter .4s ease;
-      border-bottom: 1px solid transparent;
+      transition: background: #000;
     }
     nav.scrolled {
       background: rgba(9,9,11,.88);
@@ -90,7 +89,7 @@
     /* ── HERO ── */
     .hero {
       position: relative;
-      min-height: 100svh;
+      min-height: 100vh;
       display: flex; flex-direction: column; justify-content: flex-end;
       overflow: hidden;
     }
@@ -107,7 +106,7 @@
     .hero-bg.loaded { transform: scale(1); }
     .hero-content {
       position: relative; z-index: 2;
-      max-width: 72rem; margin: 0 auto; padding: 0 2rem 0;
+      max-width: 900px; margin: 0 auto; padding: 0 2rem 5rem;
       width: 100%;
     }
     .hero-badge {
@@ -124,8 +123,8 @@
     .hero-badge::before { content: '✦'; font-size: .5rem; color: var(--accent); }
     .hero-h1 {
       font-family: 'Boska', serif;
-      font-size: clamp(2.8rem, 6.5vw, 5.5rem);
-      font-weight: 400;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
       line-height: 1.02;
       letter-spacing: -.03em;
       color: #fff;
@@ -922,6 +921,7 @@
   </script>
 </body>
 </html>
+
 
 
 
