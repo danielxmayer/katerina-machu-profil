@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bc. Kateřina Machů – Náčelnice ČOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #ffffff;
+  --off-white: #faf9f7;
+  --black: #0d0d0d;
+  --dark: #1a1a1a;
+  --mid: #555555;
+  --light: #999999;
+  --border: #e8e4df;
+  --accent: #8B6F47;
+  --accent-light: #f0ebe4;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--white);
+  color: var(--dark);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAVBAR ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow .3s ease;
+}
+nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.06); }
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--black);
+  text-decoration: none;
+  letter-spacing: .02em;
+}
+.nav-logo span {
+  font-size: .7rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: var(--light);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-left: .75rem;
+}
+
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links a {
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--black); }
+
+@media (max-width: 768px) { .nav-links { display: none; } }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 68px;
+}
+
+.hero-photo-wrap {
+  position: relative;
+  overflow: hidden;
+  background: var(--off-white);
+}
+.hero-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% 15%;
+  display: block;
+}
+
+.hero-text-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 5rem 5rem 6rem;
+  background: var(--white);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+.hero-badge::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--accent);
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -.01em;
+  color: var(--black);
+  margin-bottom: .5rem;
+}
+.hero-name em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.hero-role {
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-bottom: 2.5rem;
+}
+
+.hero-divider {
+  width: 40px; height: 1px;
+  background: var(--border);
+  margin-bottom: 2.5rem;
+}
+
+.hero-sub {
+  font-size: .875rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.8;
+  max-width: 38ch;
+  margin-bottom: 3rem;
+}
+
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn-primary {
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--black);
+  padding: .875rem 2rem;
+  text-decoration: none;
+  transition: background .2s, transform .2s;
+}
+.btn-primary:hover { background: var(--dark); transform: translateY(-1px); }
+
+.btn-secondary {
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--black);
+  border: 1px solid var(--border);
+  padding: .875rem 2rem;
+  text-decoration: none;
+  transition: border-color .2s, transform .2s;
+}
+.btn-secondary:hover { border-color: var(--black); transform: translateY(-1px); }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-photo-wrap { height: 60vh; }
+  .hero-text-wrap { padding: 3rem 2rem; }
+}
+
+/* ── STATS STRIP ── */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stat-item {
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat-item:last-child { border-right: none; }
+
+.stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--black);
+  line-height: 1;
+  display: block;
+  margin-bottom: .5rem;
+}
+.stat-label {
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--light);
+}
+
+@media (max-width: 600px) {
+  .stats-strip { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(2) { border-right: none; }
+  .stat-item:nth-child(3) { border-right: 1px solid var(--border); }
+}
+
+/* ── SECTIONS ── */
+.section {
+  padding: 7rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.section-label::before {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--accent);
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--black);
+  margin-bottom: 1.5rem;
+}
+
+.section-intro {
+  font-size: .9rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.9;
+  max-width: 60ch;
+  margin-bottom: 4rem;
+}
+
+/* ── BIO GRID ── */
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.bio-card {
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+}
+.bio-card-title {
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.bio-card ul { list-style: none; }
+.bio-card li {
+  font-size: .82rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.7;
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--off-white);
+  padding-left: 1rem;
+  position: relative;
+}
+.bio-card li::before {
+  content: '→';
+  position: absolute; left: 0;
+  color: var(--accent);
+  font-size: .75rem;
+}
+
+@media (max-width: 768px) { .bio-grid { grid-template-columns: 1fr; } }
+
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+.timeline-item {
+  position: relative;
+  padding-bottom: 2.5rem;
+  padding-left: 2rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2rem; top: .35rem;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateX(-3px);
+}
+.timeline-year {
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .4rem;
+}
+.timeline-text {
+  font-size: .85rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.7;
+}
+.timeline-text strong {
+  font-weight: 500;
+  color: var(--dark);
+}
+
+/* ── QUOTE ── */
+.quote-section {
+  background: var(--off-white);
+  padding: 6rem 3rem;
+  text-align: center;
+}
+.quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  color: var(--border);
+  line-height: .5;
+  margin-bottom: 1rem;
+}
+.quote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--black);
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.5;
+}
+.quote-source {
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--light);
+}
+
+/* ── LEPORELO ── */
+.leporelo-section {
+  padding: 7rem 3rem;
+  background: var(--black);
+  color: var(--white);
+}
+.leporelo-inner { max-width: 1200px; margin: 0 auto; }
+
+.leporelo-section .section-label { color: var(--accent); }
+.leporelo-section .section-label::before { background: var(--accent); }
+.leporelo-section .section-title { color: var(--white); }
+.leporelo-section .section-intro { color: rgba(255,255,255,.5); }
+
+.leporelo-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,.08);
+  margin-bottom: 4rem;
+}
+.leporelo-stat {
+  background: var(--black);
+  padding: 2rem;
+  text-align: center;
+}
+.leporelo-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--white);
+  display: block;
+  margin-bottom: .4rem;
+}
+.leporelo-stat-label {
+  font-size: .6rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+}
+
+.leporelo-parts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,.08);
+}
+.leporelo-part {
+  background: var(--black);
+  padding: 2rem 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+.part-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.15);
+  line-height: 1;
+  min-width: 1.5rem;
+}
+.part-content {}
+.part-title {
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  color: var(--white);
+  margin-bottom: .4rem;
+}
+.part-desc {
+  font-size: .78rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.45);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .leporelo-stats { grid-template-columns: repeat(2, 1fr); }
+  .leporelo-parts { grid-template-columns: 1fr; }
+}
+
+/* ── VIZE ── */
+.vize-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.vize-card {
+  padding: 2rem 0;
+  border-top: 2px solid var(--border);
+}
+.vize-card-title {
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+.vize-card-text {
+  font-size: .8rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) { .vize-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .vize-grid { grid-template-columns: 1fr; } }
+
+/* ── MEDIA ── */
+.media-section {
+  background: var(--off-white);
+  padding: 7rem 3rem;
+}
+.media-inner { max-width: 1200px; margin: 0 auto; }
+
+.media-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-bottom: 3rem;
+}
+.topic-tag {
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dark);
+  border: 1px solid var(--border);
+  background: var(--white);
+  padding: .5rem 1rem;
+}
+
+.media-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--dark);
+  border-left: 2px solid var(--accent);
+  padding-left: 2rem;
+  margin-bottom: .75rem;
+  line-height: 1.5;
+}
+.media-source {
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--light);
+  padding-left: 2rem;
+}
+
+/* ── ZDROJE ── */
+.zdroje-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+.zdroj-item {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.zdroj-item:nth-child(odd) { padding-right: 3rem; }
+.zdroj-item:nth-child(even) { padding-left: 3rem; border-left: 1px solid var(--border); }
+.zdroj-arrow {
+  font-size: .75rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.zdroj-text {
+  font-size: .78rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .zdroje-list { grid-template-columns: 1fr; }
+  .zdroj-item:nth-child(even) { padding-left: 0; border-left: none; }
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black);
+  color: rgba(255,255,255,.3);
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .65rem;
+  font-weight: 400;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.6);
+  letter-spacing: .02em;
+}
+.footer-email {
+  color: rgba(255,255,255,.3);
+  text-decoration: none;
+  font-size: .65rem;
+  letter-spacing: .1em;
+  transition: color .2s;
+}
+.footer-email:hover { color: var(--white); }
+
+/* ── SCROLL REVEAL ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── BACK TO TOP ── */
+#scroll-top {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  width: 44px; height: 44px;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity .3s;
+  text-decoration: none;
+  z-index: 50;
+}
+#scroll-top.visible { opacity: 1; }
+#scroll-top:hover { background: var(--dark); }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <a href="#top" class="nav-logo">KM <span>Bc. Kateřina Machů</span></a>
+  <div class="nav-links">
+    <a href="#biografie">Biografie</a>
+    <a href="#sokol">Sokol</a>
+    <a href="#leporelo">Leporelo</a>
+    <a href="#media">Média</a>
+    <a href="#vize">Vize</a>
+    <a href="#zdroje">Zdroje</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-photo-wrap">
+    <img src="katerinamachu.jpg" alt="Bc. Kateřina Machů">
+  </div>
+  <div class="hero-text-wrap">
+    <div class="hero-badge">Náčelnice ČOS · od 22. června 2025</div>
+    <h1 class="hero-name">Kateřina<br><em>Machů</em></h1>
+    <p class="hero-role">Náčelnice ČOS · Cvičitelka · Sestra</p>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Cvičitelka, autorka skladby Leporelo, nositelka Ceny starosty ČOS za záchranu lidského života a specialistka paliativní péče.</p>
+    <div class="hero-btns">
+      <a href="#biografie" class="btn-primary">Číst profil</a>
+      <a href="#leporelo" class="btn-secondary">Skladba Leporelo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item" data-reveal>
+    <span class="stat-number">23+</span>
+    <span class="stat-label">Let v Sokole</span>
+  </div>
+  <div class="stat-item" data-reveal>
+    <span class="stat-number">1 620</span>
+    <span class="stat-label">Cvičenek na sletu</span>
+  </div>
+  <div class="stat-item" data-reveal>
+    <span class="stat-number">6</span>
+    <span class="stat-label">Let jako sestra</span>
+  </div>
+  <div class="stat-item" data-reveal>
+    <span class="stat-number">3</span>
+    <span class="stat-label">Slety jako cvičenka</span>
+  </div>
+</div>
+
+<!-- BIOGRAFIE -->
+<section class="section" id="biografie">
+  <div data-reveal>
+    <p class="section-label">Biografie</p>
+    <h2 class="section-title">Zdraví, pohyb<br>a komunita.</h2>
+    <p class="section-intro">Bc. Kateřina Machů (* cca 1993) propojuje ve svém životě dvě zdánlivě vzdálené oblasti — sokolskou cvičitelskou dráhu a zdravotnickou kariéru. Obě ho říká totéž: záleží na lidech, ne na strukturách.</p>
+  </div>
+
+  <div class="bio-grid" data-reveal>
+    <div class="bio-card">
+      <p class="bio-card-title">Zdravotnická kariéra</p>
+      <ul>
+        <li>Bc. ošetřovatelství – 3. LF Univerzity Karlovy Praha</li>
+        <li>6 let jako sestra: kardiologie → JIP → chron. srdeční selhání</li>
+        <li>5 let úzká spolupráce s paliativním týmem</li>
+        <li>Od září 2024: specialistka vzdělávání, Centrum paliativní péče Praha</li>
+        <li>Členka Zdravotní komise ČOS</li>
+      </ul>
+    </div>
+    <div class="bio-card">
+      <p class="bio-card-title">Sokolská kariéra</p>
+      <ul>
+        <li>Cvičitelka TeamGymu TGJ II Žactvo (12–16 let), Sokol Praha Vršovice</li>
+        <li>Vedoucí sboru dorostenek a mladších žen OV ČOS</li>
+        <li>Od září 2023: metodička Odboru všestrannosti ČOS</li>
+        <li>Od 22. 6. 2025: náčelnice ČOS, člen Předsednictva ČOS</li>
+        <li>Cena starosty ČOS za záchranu lidského života</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section" id="sokol" style="padding-top: 0">
+  <div data-reveal>
+    <p class="section-label">Sokolská timeline</p>
+    <h2 class="section-title">Přes dvě desetiletí<br>v jedné organizaci.</h2>
+  </div>
+  <div class="timeline" data-reveal>
+    <div class="timeline-item">
+      <p class="timeline-year">2002 — Vstup</p>
+      <p class="timeline-text"><strong>Přichází do T. J. Sokol Praha Vršovice</strong> ve věku 10 let. Začátek celoživotního vztahu s organizací.</p>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-year">cca 2007 — První licence</p>
+      <p class="timeline-text"><strong>Ve věku 15 let získává „pomahatelskou" licenci.</strong> Posun od cvičenky k vedení druhých.</p>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-year">cca 2010 — Vedení oddílu</p>
+      <p class="timeline-text"><strong>Kolem 18 let přebírá vedení oddílu TeamGymu.</strong> Začíná cvičit děti a mládež ve Vršovicích.</p>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-year">2006, 2012, 2018 — Slety</p>
+      <p class="timeline-text"><strong>Tři všesokolské slety jako cvičenka</strong> — zkušenost, která předchází roli autorky skladby.</p>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-year">Září 2023 — Metodička OV</p>
+      <p class="timeline-text"><strong>Nastupuje jako metodička Odboru všestrannosti ČOS</strong> a vedoucí sboru dorostenek a mladších žen.</p>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-year">4.–5. července 2024 — Leporelo</p>
+      <p class="timeline-text"><strong>Skladba připravená za 3 měsíce vystoupí na XVII. sletu.</strong> Cvičí 1 620 dorostenek a mladších žen.</p>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-year">22. června 2025 — Náčelnice</p>
+      <p class="timeline-text"><strong>Zvolena na XIV. sněmu ČOS v Tyršově domě.</strong> Automaticky vstupuje do Předsednictva ČOS. Tandemem je náčelník Mgr. Petr Sádek.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote-text">Sokol nejsem já, ale my.</p>
+  <p class="quote-source">Kateřina Machů · rozhovor pro ČOS, 2025</p>
+</div>
+
+<!-- LEPORELO -->
+<section class="leporelo-section" id="leporelo">
+  <div class="leporelo-inner">
+    <div data-reveal>
+      <p class="section-label">Slet 2024</p>
+      <h2 class="section-title">Skladba Leporelo</h2>
+      <p class="section-intro">Hromadná skladba pro dorostenky a mladší ženy, připravená za pouhé tři měsíce. Oslava ženství — myšlenka, že každé tělo je jiné, ale krásné svým způsobem.</p>
+    </div>
+
+    <div class="leporelo-stats" data-reveal>
+      <div class="leporelo-stat">
+        <span class="leporelo-stat-num">1 620</span>
+        <span class="leporelo-stat-label">Cvičenek</span>
+      </div>
+      <div class="leporelo-stat">
+        <span class="leporelo-stat-num">6:45</span>
+        <span class="leporelo-stat-label">Délka</span>
+      </div>
+      <div class="leporelo-stat">
+        <span class="leporelo-stat-num">3</span>
+        <span class="leporelo-stat-label">Měsíce přípravy</span>
+      </div>
+      <div class="leporelo-stat">
+        <span class="leporelo-stat-num">4</span>
+        <span class="leporelo-stat-label">Části skladby</span>
+      </div>
+    </div>
+
+    <div class="leporelo-parts" data-reveal>
+      <div class="leporelo-part">
+        <span class="part-num">1</span>
+        <div class="part-content">
+          <p class="part-title">Jóga s akro-jógou</p>
+          <p class="part-desc">Pomalý, meditativní úvod. Partnerská akrobacie ve dvojicích. Formace 4×4.</p>
+        </div>
+      </div>
+      <div class="leporelo-part">
+        <span class="part-num">2</span>
+        <div class="part-content">
+          <p class="part-title">Cvičení s podložkou</p>
+          <p class="part-desc">Barevná podložka (fialová/žlutá) jako náčiní a vizuální prvek. 30sekundový segment.</p>
+        </div>
+      </div>
+      <div class="leporelo-part">
+        <span class="part-num">3</span>
+        <div class="part-content">
+          <p class="part-title">Centrální část</p>
+          <p class="part-desc">Rychlejší, elegantní pohyby na titulní píseň. Ženský, elegantní charakter.</p>
+        </div>
+      </div>
+      <div class="leporelo-part">
+        <span class="part-num">4</span>
+        <div class="part-content">
+          <p class="part-title">Aerobní finále</p>
+          <p class="part-desc">Nejdynamičtější část. Podložky skládají tvar leporela viditelný z výšky stadionu.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section class="media-section" id="media">
+  <div class="media-inner">
+    <div data-reveal>
+      <p class="section-label">Mediální obraz</p>
+      <h2 class="section-title">Jak mluví<br>a kde se objevuje.</h2>
+      <p class="section-intro">Ve veřejných výstupech propojuje Machů reprezentaci vedení ČOS s konkrétní pohybovou filosofií. Nepůsobí jako funkcionářka, ale jako nositelka hodnotového rámce.</p>
+    </div>
+
+    <div class="media-topics" data-reveal>
+      <span class="topic-tag">Komunita a identita Sokola</span>
+      <span class="topic-tag">Mládež a pohyb</span>
+      <span class="topic-tag">Prevence a zdraví</span>
+      <span class="topic-tag">Ženství a sebepřijetí</span>
+      <span class="topic-tag">Regionální oddíly</span>
+    </div>
+
+    <div data-reveal>
+      <p class="media-quote">„Je fajn, že oba máme blízko ke cvičencům."</p>
+      <p class="media-source">O tandemu s náčelníkem Mgr. Petrem Sádkem · ČT Sport, květen 2025</p>
+    </div>
+  </div>
+</section>
+
+<!-- VIZE -->
+<section class="section" id="vize">
+  <div data-reveal>
+    <p class="section-label">Vize 2025–2028</p>
+    <h2 class="section-title">Priority<br>jako náčelnice.</h2>
+    <p class="section-intro">Machů se odlišuje od tradičního obrazu sokolského funkcionáře: zaměřuje se na konkrétní lidi a jejich životní situace, ne na abstraktní struktury.</p>
+  </div>
+
+  <div class="vize-grid" data-reveal>
+    <div class="vize-card">
+      <p class="vize-card-title">Dorostenky a žákyně</p>
+      <p class="vize-card-text">Kategorie, které nejčastěji odcházejí při zkouškách a životních změnách. Chce ukázat, že lze dočasně přerušit a vrátit se.</p>
+    </div>
+    <div class="vize-card">
+      <p class="vize-card-title">Prevence zranění</p>
+      <p class="vize-card-text">Zdravotnická zkušenost z JIP a paliativy je přímým zdrojem pochopení, co pohyb a jeho absence s tělem dělá.</p>
+    </div>
+    <div class="vize-card">
+      <p class="vize-card-title">Mezigenerační přitažlivost</p>
+      <p class="vize-card-text">Inspiruje ji zjištění, že na Leporelu cvičily matky a dcery společně. Tento model chce přenést do dalších formátů.</p>
+    </div>
+    <div class="vize-card">
+      <p class="vize-card-title">Moderní komunikace</p>
+      <p class="vize-card-text">Nositelka prezentace „Jak mluvit se Sokoly o Sokole". Chce sjednotit jazyk a modernizovat tvář organizace.</p>
+    </div>
+    <div class="vize-card">
+      <p class="vize-card-title">Komunita bez stigmatu</p>
+      <p class="vize-card-text">Sokol jako zázemí, kam se lze vracet. Zaměřit se na to, co nás spojuje — ne na to, s čím se neshodujeme.</p>
+    </div>
+    <div class="vize-card">
+      <p class="vize-card-title">Regionální oddíly</p>
+      <p class="vize-card-text">Metodika musí fungovat i tam, kde není pražský zájem ani zázemí. Drobné oddíly tvoří základ živé sítě.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ZDROJE -->
+<section class="section" id="zdroje" style="background: var(--off-white); max-width: 100%; padding: 7rem 3rem;">
+  <div style="max-width: 1200px; margin: 0 auto">
+    <div data-reveal>
+      <p class="section-label">Zdroje</p>
+      <h2 class="section-title">Ověřené<br>veřejné odkazy.</h2>
+      <p class="section-intro">Primární zdroje pro fact-checking, redakční brief nebo tvorbu copy. Všechny informace v tomto profilu jsou z těchto zdrojů.</p>
+    </div>
+    <div class="zdroje-list" data-reveal>
+      <div class="zdroj-item">
+        <span class="zdroj-arrow">→</span>
+        <span class="zdroj-text">sokol.eu — Nově zvolenou náčelnicí ČOS je Kateřina Machů</span>
+      </div>
+      <div class="zdroj-item">
+        <span class="zdroj-arrow">→</span>
+        <span class="zdroj-text">Organizační struktura OV ČOS – náčelnictvo žen</span>
+      </div>
+      <div class="zdroj-item">
+        <span class="zdroj-arrow">→</span>
+        <span class="zdroj-text">Předsednictvo ČOS (2025–2028)</span>
+      </div>
+      <div class="zdroj-item">
+        <span class="zdroj-arrow">→</span>
+        <span class="zdroj-text">sokol.eu – skladba Leporelo (XVII. slet)</span>
+      </div>
+      <div class="zdroj-item">
+        <span class="zdroj-arrow">→</span>
+        <span class="zdroj-text">slet2024.cz – Leporelo: oslava ženství</span>
+      </div>
+      <div class="zdroj-item">
+        <span class="zdroj-arrow">→</span>
+        <span class="zdroj-text">Stisk.online – vznik a filosofie Leporela</span>
+      </div>
+      <div class="zdroj-item">
+        <span class="zdroj-arrow">→</span>
+        <span class="zdroj-text">ČT Sport – Mladí náčelníci chtějí do Sokola přivést mladé (23. 5. 2025)</span>
+      </div>
+      <div class="zdroj-item">
+        <span class="zdroj-arrow">→</span>
+        <span class="zdroj-text">Centrum paliativní péče – profil specialistky vzdělávání</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">KM</span>
+  <span>Bc. Kateřina Machů · Profil osobnosti · Podklad pro web</span>
+  <a href="mailto:kmachu@sokol.eu" class="footer-email">kmachu@sokol.eu</a>
+</footer>
+
+<a href="#top" id="scroll-top" aria-label="Zpět nahoru">↑</a>
+
+<script>
+const nav = document.getElementById('nav');
+const scrollTopBtn = document.getElementById('scroll-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    nav.classList.add('scrolled');
+    scrollTopBtn.classList.add('visible');
+  } else {
+    nav.classList.remove('scrolled');
+    scrollTopBtn.classList.remove('visible');
+  }
+}, { passive: true });
+
+const reveals = document.querySelectorAll('[data-reveal]');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('revealed'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+setTimeout(() => {
+  reveals.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('revealed');
+  });
+}, 100);
+</script>
+</body>
+</html>
