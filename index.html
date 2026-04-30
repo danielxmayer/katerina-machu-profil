@@ -572,6 +572,123 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.06); }
   .zdroj-item:nth-child(even) { padding-left: 0; border-left: none; }
 }
 
+/* ── FIRMY ── */
+.firmy-section {
+  padding: 7rem 3rem;
+  background: var(--white);
+}
+.firmy-inner { max-width: 1200px; margin: 0 auto; }
+
+.firmy-benefity {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+.benefit-col {
+  border-top: 2px solid var(--border);
+  padding-top: 2rem;
+}
+.benefit-col-title {
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.benefit-col ul { list-style: none; }
+.benefit-col li {
+  font-size: .82rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.7;
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--off-white);
+  padding-left: 1.25rem;
+  position: relative;
+}
+.benefit-col li::before {
+  content: '→';
+  position: absolute; left: 0;
+  color: var(--accent);
+  font-size: .75rem;
+}
+
+.firmy-cta {
+  background: var(--off-white);
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+.firmy-cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-weight: 300;
+  color: var(--black);
+  margin-bottom: .75rem;
+}
+.firmy-cta-sub {
+  font-size: .82rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.8;
+  max-width: 52ch;
+}
+
+.proc-ona {
+  border-top: 1px solid var(--border);
+  padding-top: 4rem;
+}
+.proc-ona-text {
+  font-size: .92rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.9;
+  max-width: 68ch;
+  margin-bottom: 3rem;
+}
+.proc-ona-pillars { display: flex; flex-direction: column; gap: 0; }
+.proc-pillar {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 18ch 1fr;
+  gap: 2rem;
+  align-items: baseline;
+}
+.proc-pillar-title {
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.proc-pillar-title::before {
+  content: '→';
+  color: var(--accent);
+}
+.proc-pillar-desc {
+  font-size: .82rem;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .firmy-benefity { grid-template-columns: 1fr; }
+  .firmy-cta { grid-template-columns: 1fr; }
+  .proc-pillar { grid-template-columns: 1fr; gap: .5rem; }
+}
+
 /* ── FOOTER ── */
 footer {
   background: var(--black);
@@ -645,6 +762,7 @@ footer {
     <a href="#leporelo">Leporelo</a>
     <a href="#media">Média</a>
     <a href="#vize">Vize</a>
+    <a href="#firmy">Pro firmy</a>
     <a href="#zdroje">Zdroje</a>
   </div>
 </nav>
@@ -882,6 +1000,80 @@ footer {
       <p class="vize-card-title">Regionální oddíly</p>
       <p class="vize-card-text">Metodika musí fungovat i tam, kde není pražský zájem ani zázemí. Drobné oddíly tvoří základ živé sítě.</p>
     </div>
+  </div>
+</section>
+
+<!-- FIRMY -->
+<section class="firmy-section" id="firmy">
+  <div class="firmy-inner">
+
+    <div data-reveal>
+      <p class="section-label">Firemní cvičení</p>
+      <h2 class="section-title">Pohyb jako součást<br>pracovního dne.</h2>
+      <p class="section-intro">Kateřina přichází přímo do vaší firmy. Bez nutnosti fitness centra, bez složité logistiky. Lekce na míru — pro tým, který sedí, a tělo, které to cítí.</p>
+    </div>
+
+    <!-- 3 SLOUPCE BENEFITŮ -->
+    <div class="firmy-benefity" data-reveal>
+      <div class="benefit-col">
+        <p class="benefit-col-title">Zdraví &amp; výkon</p>
+        <ul>
+          <li>Méně bolestí zad a krční páteře</li>
+          <li>Více energie během celého pracovního dne</li>
+          <li>Prevence vyhoření a chronického stresu</li>
+          <li>Silnější imunita a odolnost organismu</li>
+        </ul>
+      </div>
+      <div class="benefit-col">
+        <p class="benefit-col-title">Tým &amp; kultura</p>
+        <ul>
+          <li>Stmelení týmu skrze sdílený pohyb</li>
+          <li>Lepší komunikace napříč odděleními</li>
+          <li>Společný rituál, který tým baví a vrací se k němu</li>
+          <li>Mezigenerační přesah — funguje pro všechny věkové skupiny</li>
+        </ul>
+      </div>
+      <div class="benefit-col">
+        <p class="benefit-col-title">Firma &amp; čísla</p>
+        <ul>
+          <li>Prokazatelně nižší nemocnost a absence</li>
+          <li>Pohybový benefit jako daňově uznatelný náklad</li>
+          <li>Vyšší atraktivita firmy pro nové talenty</li>
+          <li>Měřitelný dopad na produktivitu a soustředění</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="firmy-cta" data-reveal>
+      <div>
+        <p class="firmy-cta-title">Bezplatná konzultace cvičení na míru</p>
+        <p class="firmy-cta-sub">Zjistěte, jaký program by seděl vašemu týmu. Probereme složení skupiny, časové možnosti i prostory. Bez závazků — první konzultace je zdarma.</p>
+      </div>
+      <a href="mailto:kmachu@sokol.eu?subject=Firemní cvičení — poptávka konzultace" class="btn-primary">Domluvit konzultaci</a>
+    </div>
+
+    <!-- PROČ PRÁVĚ ONA -->
+    <div class="proc-ona" data-reveal>
+      <p class="section-label">Proč právě ona</p>
+      <h2 class="section-title">Cvičitelka, která rozumí<br>i tomu, co pohyb dělá s tělem.</h2>
+      <p class="proc-ona-text">Většina firemních lektorů přináší lekci. Kateřina přináší perspektivu. Jako zdravotní sestra s šesti lety na JIP a kardiologii ví, co se s tělem děje, když se nehýbe — a co se stane, když pohyb přijde pozdě. Jako cvičitelka Sokola s více než dvaceti lety praxe a autorka skladby pro 1 620 cvičenek ví, jak pohyb zakotvit tak, aby vydržel a bavil. A jako nově zvolená náčelnice ČOS ví, že pohyb funguje nejlépe tehdy, když se stane součástí komunity — ne jen benefitem na papíře.</p>
+      <div class="proc-ona-pillars">
+        <div class="proc-pillar">
+          <p class="proc-pillar-title">Zdravotnická erudice</p>
+          <p class="proc-pillar-desc">Lekce navržená s ohledem na prevenci zranění, bolesti zad a chronický stres. Ne jen hezké cvičení — ale pohyb, který tělu skutečně pomáhá. Šest let na JIP a kardiologii dává Kateřině vhled, který běžný lektor nemá.</p>
+        </div>
+        <div class="proc-pillar">
+          <p class="proc-pillar-title">20 let cvičitelské praxe</p>
+          <p class="proc-pillar-desc">Zkušenost s dětmi, mládeží i dospělými. Skupinové i individuální formáty. Autorka hromadné skladby pro největší sportovní akci v České republice — XVII. všesokolský slet 2024.</p>
+        </div>
+        <div class="proc-pillar">
+          <p class="proc-pillar-title">Důvěryhodnost přesahující fitness</p>
+          <p class="proc-pillar-desc">Nositelka Ceny starosty ČOS za záchranu lidského života. Náčelnice celé České obce sokolské. Člověk, který pohybu věří, protože viděl, co jeho absence způsobuje — a co naopak dokáže zachránit.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
